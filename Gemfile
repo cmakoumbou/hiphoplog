@@ -11,7 +11,8 @@ gem 'jbuilder', '2.2.12'
 gem 'sdoc', '0.4.1', group: :doc
 gem 'pg', '0.18.1'
 gem 'puma', '2.11.1'
-gem 'rack-timeout', '0.2.1' 
+gem 'rack-timeout', '0.2.1'
+gem 'bootstrap-sass', '3.3.4.1'
 
 group :development, :test do
   gem 'byebug', '4.0.3'
