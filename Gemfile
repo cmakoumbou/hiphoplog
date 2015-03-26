@@ -15,3 +15,7 @@ group :development, :test do
   gem 'web-console', '2.1.2'
   gem 'spring', '1.3.3'
 end
+
+group :production do
+	gem 'rails_12factor', '0.0.3'
+end
