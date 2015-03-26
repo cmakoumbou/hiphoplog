@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.0'
 
 gem 'rails', '4.2.1'
 gem 'sass-rails', '5.0.1'
@@ -9,6 +10,8 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.2.12'
 gem 'sdoc', '0.4.1', group: :doc
 gem 'pg', '0.18.1'
+gem 'puma', '2.11.1'
+gem 'rack-timeout', '0.2.1' 
 
 group :development, :test do
   gem 'byebug', '4.0.3'
