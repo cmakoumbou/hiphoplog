@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+
   root 'home#index'
+
+  get '/artists', to: 'artists#index', as: :artists_index
+  get '/artists/:id', to: 'artists#show', as: :artists_root
+
+  get '/search', to: 'home#search', as: :search_root
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

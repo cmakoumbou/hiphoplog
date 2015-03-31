@@ -1,0 +1,48 @@
+<% provide(:title, 'Search') %>
+<% if @results.blank? %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><strong>Sorry, no results were found!</strong></p>
+      <p>Search Suggestions:</p>
+      <ul>
+        <li>Check your spelling.</li>
+        <li>Try more general words.</li>
+        <li>Try different words that mean the same thing.</li>
+        <li>Browse the <%= link_to "artists page", artists_index_path %> to find all their content.</li>
+      </ul>
+    </div>
+  </div>
+<% else %>
+  <div class="list-group">
+    <% @results.each do |result| %>
+      <% if result.searchable_type == "Video" %>  
+        <%= link_to "https://www.youtube.com/watch?v=#{result.searchable.key}", class: "list-group-item clearfix", :target => "_blank" do %>
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag("http://img.youtube.com/vi/#{result.searchable.key}/hqdefault.jpg", size: "190x120") %>
+            </div>
+            <div class="media-body media-middle">
+              <h4 class="media-heading"><%= result.searchable.name %></h4>
+              <p>Released on <%= result.searchable.published_at.strftime("%b %d, %Y") %></p>
+              <p><%= result.searchable.channel.artist.name %></p>
+            </div>
+          </div>
+        <% end %>
+      <% elsif result.searchable_type == "Artist" %>
+        <%= link_to artists_root_path(result.searchable), class: "list-group-item clearfix" do %>
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag("http://placehold.it/190x120") %>
+            </div>
+            <div class="media-body media-middle">
+              <h4 class="media-heading"><%= result.searchable.name %></h4>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= paginate @results %>
+  </div>
+<% end %>

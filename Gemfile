@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
+#ruby-gemset=hiphoplog
 
 gem 'rails', '4.2.1'
 gem 'sass-rails', '5.0.1'
@@ -11,8 +12,13 @@ gem 'jbuilder', '2.2.12'
 gem 'sdoc', '0.4.1', group: :doc
 gem 'pg', '0.18.1'
 gem 'puma', '2.11.1'
-gem 'rack-timeout', '0.2.1'
+gem 'rack-timeout', '0.2.3'
 gem 'bootstrap-sass', '3.3.4.1'
+gem 'yt', '0.14.0'
+gem 'annotate', '2.6.8'
+gem 'kaminari', '0.16.3'
+gem 'browser', '0.8.0'
+gem 'pg_search', '0.7.9'
 
 group :development, :test do
   gem 'byebug', '4.0.3'

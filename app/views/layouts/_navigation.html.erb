@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -12,7 +12,18 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Explore', root_path %></li>
+        <li><%= link_to 'Artists', artists_index_path %></li>
       </ul>
+      <%= form_tag("/search", method: "get", class: "navbar-form navbar-right") do %>
+        <div class="input-group">
+          <%= text_field_tag(:query, params[:query], placeholder: "Search Hiphoplog", class: "form-control") %>
+          <span class="input-group-btn">
+            <%= button_tag(:name => nil, class: "btn btn-default") do %>
+              <span class="glyphicon glyphicon-search"></span
+            <% end %>
+          </span>
+        </div>
+      <% end %>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
