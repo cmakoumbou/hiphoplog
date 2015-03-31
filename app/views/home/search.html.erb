@@ -19,7 +19,7 @@
         <%= link_to "https://www.youtube.com/watch?v=#{result.searchable.key}", class: "list-group-item clearfix", :target => "_blank" do %>
           <div class="media">
             <div class="media-left">
-              <%= image_tag("http://img.youtube.com/vi/#{result.searchable.key}/hqdefault.jpg", size: "190x120") %>
+              <%= image_tag("http://img.youtube.com/vi/#{result.searchable.key}/hqdefault.jpg", class: "image") %>
             </div>
             <div class="media-body media-middle">
               <h4 class="media-heading"><%= result.searchable.name %></h4>
@@ -32,7 +32,7 @@
         <%= link_to artists_root_path(result.searchable), class: "list-group-item clearfix" do %>
           <div class="media">
             <div class="media-left">
-              <%= image_tag("http://placehold.it/190x120") %>
+              <%= image_tag("http://placehold.it/250x150", class: "image") %>
             </div>
             <div class="media-body media-middle">
               <h4 class="media-heading"><%= result.searchable.name %></h4>
