@@ -19,6 +19,7 @@ gem 'annotate', '2.6.8'
 gem 'kaminari', '0.16.3'
 gem 'browser', '0.8.0'
 gem 'pg_search', '0.7.9'
+gem 'jquery-infinite-pages', '0.2.0'
 
 group :development, :test do
   gem 'byebug', '4.0.3'

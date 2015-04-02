@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  root 'videos#index'
 
-  root 'home#index'
+  get '/videos', to: 'videos#index', as: :videos_index
 
   get '/artists', to: 'artists#index', as: :artists_index
   get '/artists/:id', to: 'artists#show', as: :artists_root

@@ -1,0 +1,12 @@
+<%= link_to "https://www.youtube.com/watch?v=#{video.key}", class: "list-group-item clearfix", :target => "_blank" do %>
+	<div class="media">
+		<div class="media-left">
+    	<%= image_tag("http://img.youtube.com/vi/#{video.key}/hqdefault.jpg", class: "image") %>
+  	</div>
+  	<div class="media-body media-middle">
+    	<h4 class="media-heading"><%= video.name %></h4>
+    	<p>Released on <%= video.published_at.strftime("%b %d, %Y") %></p>
+    	<p><%= video.channel.artist.name %></p>
+  	</div>
+  </div>
+<% end %>
