@@ -5,6 +5,6 @@ class ArtistsController < ApplicationController
 
   def show
   	@artist = Artist.find(params[:id])
-  	@videos = @artist.videos.order('published_at DESC')
+  	@videos = @artist.videos.order('published_at DESC').page(params[:page]).per(1)
   end
 end

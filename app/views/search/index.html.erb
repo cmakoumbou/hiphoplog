@@ -1,0 +1,22 @@
+<% provide(:title, 'Search') %>
+<% if @search.blank? %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p><strong>Sorry, no results were found!</strong></p>
+      <p>Search Suggestions:</p>
+      <ul>
+        <li>Check your spelling.</li>
+        <li>Try more general words.</li>
+        <li>Try different words that mean the same thing.</li>
+        <li>Browse the <%= link_to "artists page", artists_index_path %> to find all their content.</li>
+      </ul>
+    </div>
+  </div>
+<% else %>
+  <div id="search" class="list-group">
+    <%= render partial: 'search', collection: @search %>
+  </div>
+  <p id="pagination">
+    <%= link_to_next_page(@search, 'Load More', :params => params, :remote => true, class: "btn btn-default btn-lg btn-block") %>
+  </p>
+<% end %>

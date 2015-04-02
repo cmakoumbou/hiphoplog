@@ -1,16 +1,2 @@
 <% provide(:title, raw(@artist.name)) %>
-<div class="list-group">
-	<% @videos.each do |v| %>
-		<%= link_to "https://www.youtube.com/watch?v=#{v.key}", class: "list-group-item clearfix", :target => "_blank" do %>
-			<div class="media">
-				<div class="media-left">
-		    	<%= image_tag("http://img.youtube.com/vi/#{v.key}/hqdefault.jpg", class: "image") %>
-		  	</div>
-		  	<div class="media-body media-middle">
-		    	<h4 class="media-heading"><%= v.name %></h4>
-		    	<p>Released on <%= v.published_at.strftime("%b %d, %Y") %></p>
-		  	</div>
-		  </div>
-		<% end %>
-	<% end %>
-</div>
+<%= render 'videos/videos' %>

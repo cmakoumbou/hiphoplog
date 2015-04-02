@@ -1,0 +1,5 @@
+<% if search.searchable_type == "Video" %>  
+  <%= render 'videos/video', video: search.searchable %>
+<% elsif search.searchable_type == "Artist" %>
+  <%= render 'artists/artist', artist: search.searchable %>
+<% end %>

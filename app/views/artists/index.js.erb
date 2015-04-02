@@ -4,5 +4,5 @@ $("<%=j render @artists %>").appendTo($("#artists"));
   $('#pagination').remove();
 <% else %>
   $('#pagination')
-    .html("<%=j link_to_next_page(@artists, 'Load More', :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
+    .html("<%=j link_to_next_page(@artists, 'Show More', :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
 <% end %>
