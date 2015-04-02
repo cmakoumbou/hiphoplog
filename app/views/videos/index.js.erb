@@ -1,10 +1,8 @@
-$("<%=j render @videos %>")
-  .appendTo($("#my-posts"));
-
+$("<%=j render @videos %>").appendTo($("#videos"));
 // Update pagination link
 <% if @videos.last_page? %>
-  $('.pagination').html("That's all, folks!");
+  $('#pagination').remove();
 <% else %>
-  $('.pagination')
-    .html("<%=j link_to_next_page(@videos, 'Next Page', :remote => true) %>");
+  $('#pagination')
+    .html("<%=j link_to_next_page(@videos, 'Load More', :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
 <% end %>
