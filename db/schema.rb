@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331151053) do
+ActiveRecord::Schema.define(version: 20150408051539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "published_at"
+    t.integer  "channel_id"
+    t.integer  "artist_id"
+    t.string   "external_image"
+  end
+
+  add_index "albums", ["artist_id"], name: "index_albums_on_artist_id", using: :btree
+  add_index "albums", ["channel_id"], name: "index_albums_on_channel_id", using: :btree
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +52,21 @@ ActiveRecord::Schema.define(version: 20150331151053) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "songs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "channel_id"
+    t.datetime "published_at"
+    t.integer  "artist_id"
+    t.string   "external_url"
+    t.string   "external_image"
+  end
+
+  add_index "songs", ["artist_id"], name: "index_songs_on_artist_id", using: :btree
+  add_index "songs", ["channel_id"], name: "index_songs_on_channel_id", using: :btree
+
   create_table "videos", force: :cascade do |t|
     t.string   "name"
     t.string   "key"
@@ -53,7 +80,11 @@ ActiveRecord::Schema.define(version: 20150331151053) do
   add_index "videos", ["artist_id"], name: "index_videos_on_artist_id", using: :btree
   add_index "videos", ["channel_id"], name: "index_videos_on_channel_id", using: :btree
 
+  add_foreign_key "albums", "artists"
+  add_foreign_key "albums", "channels"
   add_foreign_key "channels", "artists"
+  add_foreign_key "songs", "artists"
+  add_foreign_key "songs", "channels"
   add_foreign_key "videos", "artists"
   add_foreign_key "videos", "channels"
 end

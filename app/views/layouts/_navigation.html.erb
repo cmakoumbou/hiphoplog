@@ -11,7 +11,10 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+        <li><%= link_to 'Home', root_path %></li>
         <li><%= link_to 'Videos', videos_index_path %></li>
+        <li><%= link_to 'Songs', songs_index_path %></li>
+        <li><%= link_to 'Albums', albums_index_path %></li>
         <li><%= link_to 'Artists', artists_index_path %></li>
       </ul>
       <%= form_tag("/search", method: "get", class: "navbar-form navbar-right") do %>

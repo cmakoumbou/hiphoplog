@@ -1,5 +1,9 @@
-<% if search.searchable_type == "Video" %>  
-  <%= render 'videos/video', video: search.searchable %>
-<% elsif search.searchable_type == "Artist" %>
+<% if search.searchable_type == "Artist" %>
   <%= render 'artists/artist', artist: search.searchable %>
+<% elsif search.searchable_type == "Video" %>  
+  <%= render 'videos/video', video: search.searchable %>
+<% elsif search.searchable_type == "Song" %>
+  <%= render 'songs/song', song: search.searchable %>
+<% elsif search.searchable_type == "Album" %>
+  <%= render 'albums/album', album: search.searchable %>
 <% end %>

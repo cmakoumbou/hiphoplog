@@ -1,0 +1,12 @@
+<%= link_to "https://open.spotify.com/album/#{album.key}", class: "list-group-item clearfix", :target => "_blank" do %>
+	<div class="media">
+		<div class="media-left">
+    	<%= image_tag("#{album.external_image}", class: "image") %>
+  	</div>
+  	<div class="media-body media-middle">
+    	<h4 class="media-heading"><%= album.name %></h4>
+    	<p>Released on <%= album.published_at.strftime("%b %d, %Y") %></p>
+    	<p><%= album.channel.artist.name %></p>
+  	</div>
+  </div>
+<% end %>

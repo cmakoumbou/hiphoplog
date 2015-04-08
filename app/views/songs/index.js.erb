@@ -1,0 +1,8 @@
+$("<%=j render @songs %>").appendTo($("#songs"));
+// Update pagination link
+<% if @songs.last_page? %>
+  $('#pagination').remove();
+<% else %>
+  $('#pagination')
+    .html("<%=j link_to_next_page(@songs, 'Show More', :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
+<% end %>

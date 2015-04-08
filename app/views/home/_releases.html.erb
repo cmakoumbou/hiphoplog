@@ -1,0 +1,9 @@
+<% @releases.each do |release| %>
+  <% if release.class.name == "Video" %>
+    <%= render "videos/video", video: release %>
+  <% elsif release.class.name == "Song" %>
+    <%= render "songs/song", song: release %>
+  <% elsif release.class.name == "Album" %>
+    <%= render "albums/album", album: release %>  	
+  <% end %>
+<% end %>
