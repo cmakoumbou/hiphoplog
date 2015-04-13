@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408051539) do
+ActiveRecord::Schema.define(version: 20150413003427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150408051539) do
     t.integer  "channel_id"
     t.integer  "artist_id"
     t.string   "external_image"
+    t.boolean  "explicit"
   end
 
   add_index "albums", ["artist_id"], name: "index_albums_on_artist_id", using: :btree
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150408051539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "artist_id"
+    t.boolean  "multi"
   end
 
   add_index "channels", ["artist_id"], name: "index_channels_on_artist_id", using: :btree

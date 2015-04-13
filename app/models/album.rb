@@ -9,6 +9,7 @@
 #  channel_id     :integer
 #  artist_id      :integer
 #  external_image :string
+#  explicit       :boolean
 #
 
 class Album < ActiveRecord::Base

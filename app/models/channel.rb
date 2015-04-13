@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  artist_id  :integer
+#  multi      :boolean
 #
 
 class Channel < ActiveRecord::Base
@@ -41,18 +42,54 @@ class Channel < ActiveRecord::Base
 		end
 	end
 
+	# def store_channel_video
+	# 	channel = Yt::Channel.new url: self.url
+	# 	channel_count = channel.videos.count
+	# 	if channel_count > self.count
+	# 		number_of_videos = channel_count - self.count
+	# 		videos = channel.videos.first(number_of_videos)
+	# 		videos.each do |v|
+	# 			Video.create(name: v.title, key: v.id, published_at: v.published_at, channel_id: self.id, artist_id: self.artist_id)
+	# 		end
+	# 		self.count = channel_count
+	# 	end
+	# end
+
 	def store_channel_video
 		channel = Yt::Channel.new url: self.url
 		channel_count = channel.videos.count
 		if channel_count > self.count
 			number_of_videos = channel_count - self.count
 			videos = channel.videos.first(number_of_videos)
-			videos.each do |v|
-				Video.create(name: v.title, key: v.id, published_at: v.published_at, channel_id: self.id, artist_id: self.artist_id)
+			if self.multi == true
+				videos.each do |v|
+					if v.title.downcase.include? self.artist.name.downcase
+						Video.create(name: v.title, key: v.id, published_at: v.published_at, channel_id: self.id, artist_id: self.artist_id)
+					end
+				end
+			else
+				videos.each do |v|
+					Video.create(name: v.title, key: v.id, published_at: v.published_at, channel_id: self.id, artist_id: self.artist_id)
+				end
 			end
 			self.count = channel_count
 		end
 	end
+
+	# def store_channel_song
+	# 	client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
+	# 	channel = client.get('/resolve', url: self.url)
+	# 	channel_count = channel.track_count
+	# 	if channel_count > self.count
+	# 		number_of_songs = channel_count - self.count
+	# 		songs = client.get("/users/#{channel.id}/tracks").first(number_of_songs)
+	# 		songs.each do |s|
+	# 			Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
+	# 				external_url: s.permalink_url, external_image: s.artwork_url)
+	# 		end
+	# 		self.count = channel_count
+	# 	end
+	# end
 
 	def store_channel_song
 		client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
@@ -61,9 +98,18 @@ class Channel < ActiveRecord::Base
 		if channel_count > self.count
 			number_of_songs = channel_count - self.count
 			songs = client.get("/users/#{channel.id}/tracks").first(number_of_songs)
-			songs.each do |s|
-				Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
-					external_url: s.permalink_url, external_image: s.artwork_url)
+		  if self.multi == true
+		  	songs.each do |s|
+		  		if s.title.downcase.include? self.artist.name.downcase
+		  			Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
+							external_url: s.permalink_url, external_image: s.artwork_url)
+		  		end
+		  	end
+		  else
+				songs.each do |s|
+					Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
+						external_url: s.permalink_url, external_image: s.artwork_url)
+				end
 			end
 			self.count = channel_count
 		end
@@ -77,8 +123,15 @@ class Channel < ActiveRecord::Base
 			number_of_albums = channel_count - self.count
 			albums = channel.albums(album_type: 'album', limit: 50, country: 'US').first(number_of_albums)
 			albums.each do |a|
-				Album.create(name: a.name, key: a.id, published_at: a.release_date, channel_id: self.id, artist_id: self.artist_id,
-					external_image: a.images.first["url"])
+				tracks = a.tracks(limit: 50)
+				explicit = tracks.any? {|t| t.explicit == true}
+				if explicit == true
+					Album.create(name: a.name, key: a.id, published_at: a.release_date, channel_id: self.id, artist_id: self.artist_id,
+						external_image: a.images.first["url"], explicit: true)
+				elsif explicit == false
+					Album.create(name: a.name, key: a.id, published_at: a.release_date, channel_id: self.id, artist_id: self.artist_id,
+						external_image: a.images.first["url"], explicit: false)
+				end
 			end
 			self.count = channel_count
 		end

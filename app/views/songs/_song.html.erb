@@ -8,9 +8,10 @@
       <% end %>
   	</div>
   	<div class="media-body media-middle">
-    	<h4 class="media-heading"><%= song.name %></h4>
-    	<p>Released on <%= song.published_at.strftime("%b %d, %Y") %></p>
-    	<p><%= song.channel.artist.name %></p>
+    	<h4 class="media-heading"><b><%= song.name %></b></h4>
+    	Released on <%= song.published_at.strftime("%b %d, %Y") %>
+    	<p><b><%= song.channel.artist.name %></b></p>
+      <span class="label label-default">Song</span>
   	</div>
   </div>
 <% end %>
