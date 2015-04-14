@@ -16,10 +16,14 @@
 
 class Song < ActiveRecord::Base
 	include PgSearch
-  multisearchable :against => :name
+  multisearchable :against => [:name, :artist_name]
 
 	belongs_to :channel
 	belongs_to :artist
+
+	def artist_name
+		artist.name
+	end
 
 	validates :name, presence: true
 	validates :key, presence: true
