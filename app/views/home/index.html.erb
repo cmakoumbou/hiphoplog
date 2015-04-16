@@ -1,6 +1,11 @@
-<div id="releases" class="list-group">
-	<%= render 'home/releases' %>
+<div class="sixteen wide column">
+	<table id="releases" class="ui padded table">
+		<tbody>
+			<%= render 'home/releases' %>
+		</tbody>
+	</table>
+	<div class="ui hidden divider"></div>
+	<div id="pagination">
+	  <%= link_to_next_page(@releases, 'Show More', :remote => true, class: "fluid ui button") %>
+	</div>
 </div>
-<p id="pagination">
-  <%= link_to_next_page(@releases, 'Show More', :remote => true, class: "btn btn-default btn-lg btn-block") %>
-</p>

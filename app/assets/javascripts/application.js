@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
+//= require semantic-ui
 //= require jquery.infinite-pages
 //= require jquery_ujs
 //= require turbolinks

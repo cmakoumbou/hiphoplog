@@ -4,5 +4,5 @@ $("<%=j render 'home/releases' %>").appendTo($("#releases"));
   $('#pagination').remove();
 <% else %>
   $('#pagination')
-    .html("<%=j link_to_next_page(@releases, 'Show More', :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
+    .html("<%=j link_to_next_page(@releases, 'Show More', :remote => true, class: 'fluid ui button') %>");
 <% end %>

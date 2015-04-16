@@ -22,6 +22,7 @@ gem 'pg_search', '0.7.9'
 gem 'jquery-infinite-pages', '0.2.0'
 gem 'soundcloud', '0.3.2'
 gem 'rspotify', '1.13.0'
+gem 'semantic-ui-sass', '1.11.5.0'
 
 group :development, :test do
   gem 'byebug', '4.0.3'

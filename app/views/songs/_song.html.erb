@@ -1,17 +1,6 @@
-<%= link_to "#{song.external_url}", class: "list-group-item clearfix", :target => "_blank" do %>
-	<div class="media">
-		<div class="media-left">
-      <% if song.external_image.present? %>
-    	  <%= image_tag("#{song.external_image}", class: "image") %>
-      <% else %>
-        <%= image_tag("http://placehold.it/480x360/000/000", class: "image") %>
-      <% end %>
-  	</div>
-  	<div class="media-body media-middle">
-    	<h4 class="media-heading"><b><%= song.name %></b></h4>
-    	Released on <%= song.published_at.strftime("%b %d, %Y") %>
-    	<p><b><%= song.channel.artist.name %></b></p>
-      <span class="label label-default">Song</span>
-  	</div>
-  </div>
-<% end %>
+ <tr>
+  <td>Song</td>
+  <td><%= song.published_at.strftime("%B %d, %Y") %></td>
+  <td><%= link_to song.name, "#{song.external_url}", :target => "_blank" %></td>
+  <td><%= link_to song.channel.artist.name, artists_root_path(song.channel.artist) %></td>
+</tr>

@@ -1,6 +1,9 @@
-<div id="songs" class="list-group">
-	<%= render @songs %>
+<table id="songs" class="ui padded table">
+	<tbody>
+		<%= render @songs %>
+	</tbody>
+</table>
+<div class="ui hidden divider"></div>
+<div id="pagination">
+  <%= link_to_next_page(@songs, 'Show More', :remote => true, class: "fluid ui button") %>
 </div>
-<p id="pagination">
-  <%= link_to_next_page(@songs, 'Load More', :remote => true, class: "btn btn-default btn-lg btn-block") %>
-</p>

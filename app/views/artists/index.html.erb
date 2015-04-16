@@ -1,7 +1,13 @@
 <% provide(:title, 'Artists') %>
-<div id="artists" class="list-group">
-	<%= render @artists %>
+
+<div class="sixteen wide column">
+	<table id="artists" class="ui padded table">
+		<tbody>
+			<%= render @artists %>
+		</tbody>
+	</table>
+	<div class="ui hidden divider"></div>
+	<div id="pagination">
+	  <%= link_to_next_page(@artists, 'Show More', :remote => true, class: "fluid ui button") %>
+	</div>
 </div>
-<p id="pagination">
-  <%= link_to_next_page(@artists, 'Show More', :remote => true, class: "btn btn-default btn-lg btn-block") %>
-</p>

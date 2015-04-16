@@ -1,13 +1,6 @@
-<%= link_to "https://www.youtube.com/watch?v=#{video.key}", class: "list-group-item clearfix", :target => "_blank" do %>
-	<div class="media">
-		<div class="media-left">
-    	<%= image_tag("http://img.youtube.com/vi/#{video.key}/hqdefault.jpg", class: "image") %>
-  	</div>
-  	<div class="media-body media-middle">
-    	<h4 class="media-heading"><b><%= video.name %></b></h4>
-    	Released on <%= video.published_at.strftime("%b %d, %Y") %>
-    	<p><b><%= video.channel.artist.name %></b></p>
-      <span class="label label-default">Video</span>
-  	</div>
-  </div>
-<% end %>
+<tr>
+	<td>Video</td>
+	<td><%= video.published_at.strftime("%B %d, %Y") %></td>
+	<td><%= link_to video.name, "https://www.youtube.com/watch?v=#{video.key}", :target => "_blank" %></td>
+	<td><%= link_to video.channel.artist.name, artists_root_path(video.channel.artist) %></td>
+</tr>

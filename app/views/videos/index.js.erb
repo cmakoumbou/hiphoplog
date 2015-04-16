@@ -4,5 +4,5 @@ $("<%=j render @videos %>").appendTo($("#videos"));
   $('#pagination').remove();
 <% else %>
   $('#pagination')
-    .html("<%=j link_to_next_page(@videos, 'Show More', :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
+    .html("<%=j link_to_next_page(@videos, 'Show More', :remote => true, class: 'fluid ui button') %>");
 <% end %>

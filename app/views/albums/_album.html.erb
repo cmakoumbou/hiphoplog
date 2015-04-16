@@ -1,16 +1,6 @@
-<%= link_to "https://open.spotify.com/album/#{album.key}", class: "list-group-item clearfix", :target => "_blank" do %>
-	<div class="media">
-		<div class="media-left">
-    	<%= image_tag("#{album.external_image}", class: "image") %>
-  	</div>
-  	<div class="media-body media-middle">
-    	<h4 class="media-heading"><b><%= album.name %></b></h4>
-    	Released on <%= album.published_at.strftime("%b %d, %Y") %>
-    	<p><b><%= album.channel.artist.name %></b></p>
-      <span class="label label-default">Album</span>
-      <% if album.explicit == true %>
-        <span class="label label-default">Explicit</span>
-      <% end %>
-  	</div>
-  </div>
-<% end %>
+<tr>
+  <td>Album</td>
+  <td><%= album.published_at.strftime("%B %d, %Y") %></td>
+  <td><%= link_to album.name, "https://open.spotify.com/album/#{album.key}", :target => "_blank" %></td>
+  <td><%= link_to album.channel.artist.name, artists_root_path(album.channel.artist) %></td>
+</tr>

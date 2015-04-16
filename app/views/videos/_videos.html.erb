@@ -1,6 +1,9 @@
-<div id="videos" class="list-group">
-	<%= render @videos %>
+<table id="videos" class="ui padded table">
+	<tbody>
+		<%= render @videos %>
+	</tbody>
+</table>
+<div class="ui hidden divider"></div>
+<div id="pagination">
+  <%= link_to_next_page(@videos, 'Show More', :remote => true, class: "fluid ui button") %>
 </div>
-<p id="pagination">
-  <%= link_to_next_page(@videos, 'Show More', :remote => true, class: "btn btn-default btn-lg btn-block") %>
-</p>

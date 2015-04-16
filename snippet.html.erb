@@ -1,0 +1,8 @@
+<%= video.published_at.strftime("%B %d, %Y") %>
+<%= video.channel.artist.name %>
+
+<tr>
+	<td><%= video.published_at.strftime("%B %d, %Y") %></td>
+	<td><%= video.name %></td>
+	<td><%= video.channel.artist.name %></td>
+</tr>

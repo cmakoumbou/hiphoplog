@@ -1,32 +1,36 @@
-<nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Hiphoplog', root_path, class: "navbar-brand" %>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Videos', videos_index_path %></li>
-        <li><%= link_to 'Songs', songs_index_path %></li>
-        <li><%= link_to 'Albums', albums_index_path %></li>
-        <li><%= link_to 'Artists', artists_index_path %></li>
-      </ul>
-      <%= form_tag("/search", method: "get", class: "navbar-form navbar-right") do %>
-        <div class="input-group">
-          <%= text_field_tag(:query, params[:query], placeholder: "Search Hiphoplog", class: "form-control") %>
-          <span class="input-group-btn">
-            <%= button_tag(:name => nil, class: "btn btn-default") do %>
-              <span class="glyphicon glyphicon-search"></span
-            <% end %>
-          </span>
+<div class="normal-menu">
+  <div class="ui large fixed menu page grid">
+    <%= link_to 'Hiphoplog', root_path, class: "bold item" %>
+    <%= link_to 'Videos', videos_index_path, class: "item" %>
+    <%= link_to 'Songs', songs_index_path, class: "item" %>
+    <%= link_to 'Albums', albums_index_path, class: "item" %>
+    <%= link_to 'Artists', artists_index_path, class: "item" %>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui transparent icon input">
+          <input type="text" placeholder="Search">
+          <i class="search icon"></i>
         </div>
-      <% end %>
-    </div><!--/.nav-collapse -->
+      </div>
+    </div>
   </div>
-</nav>
+</div>
+<div id="menu_sidebar" class="ui thin sidebar vertical menu">
+  <%= link_to 'Explore', root_path, class: "item" %>
+  <%= link_to "About", "", class: "item" %>
+</div>
+<div id="menu_sidebar_search" class="ui top sidebar vertical menu">
+  <div class="item">
+    <div class="ui transparent icon input">
+      <input type="text" placeholder="Search...">
+      <i class="search icon"></i>
+    </div>
+  </div>
+</div>
+<div class="ui fixed three item menu mobile-menu">
+  <a id="menu_button" class="item"><i class="content icon"></i>Menu</a>
+  <%= link_to root_path, class: "item" do %>
+    <i class="home icon"></i>Hiphoplog</a>
+  <% end %>
+  <a id="menu_button_search" class="item"><i class="search icon"></i>Search</a>
+</div>
