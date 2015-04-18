@@ -6,3 +6,10 @@
 	<td><%= video.name %></td>
 	<td><%= video.channel.artist.name %></td>
 </tr>
+
+	<div class="ui hidden divider"></div>
+	<div id="pagination">
+	  <%= link_to_next_page(@releases, 'Show More', :remote => true, class: "fluid ui button") %>
+	</div>
+
+		<%= render 'layouts/navigation' %>
