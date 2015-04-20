@@ -1,6 +1,6 @@
- <tr>
-  <td>Song</td>
-  <td><%= song.published_at.strftime("%B %d, %Y") %></td>
+<tr>
+	<td><div class="ui large red horizontal label">Song</div></td>
+	<td><h4 class="ui header"><%= song.published_at.strftime("%B %d, %Y") %></h4></td>
   <td><%= link_to song.name, "#{song.external_url}", :target => "_blank" %></td>
   <td><%= link_to song.channel.artist.name, artists_root_path(song.channel.artist) %></td>
 </tr>

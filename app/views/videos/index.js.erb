@@ -1,7 +1,7 @@
 $("<%=j render @videos %>").appendTo($("#videos"));
 // Update pagination link
 <% if @videos.last_page? %>
-  $('#pagination').remove();
+	$('#pagination').html("<h3 class='ui center aligned header'>The End</h3>");
 <% else %>
   $('#pagination')
     .html("<%=j link_to_next_page(@videos, 'Show More', :remote => true, class: 'fluid ui button') %>");

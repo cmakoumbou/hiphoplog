@@ -1,4 +1,47 @@
+body {
+	background-color: #2b2c2f;
+}
+
 #main {
 	padding-top:75px;
 	margin-bottom:50px;
+}
+
+.ui.table {
+  background: #2b2c2f;
+}
+
+.ui.table tr td {
+  border-top: 1px solid #000;
+}
+
+.ui.table {
+  border: none;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: #d95c5c;
+}
+
+
+.ui.button {
+  background-color: #232426;
+  color: #fff;
+}
+
+.ui.button:hover {
+  background-color: #232426;
+  color: #d95c5c;
+}
+
+.ui.button:focus {
+	box-shadow:none !important;
+}
+
+.ui.header {
+  color: #fff;
 }

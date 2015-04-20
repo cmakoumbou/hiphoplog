@@ -1,5 +1,11 @@
-<div class="ui fixed bottom three item menu">
-	<%= link_to 'Videos', root_path, class: "item" %>
-	<%= link_to 'Songs', root_path, class: "item" %>
-	<%= link_to 'Albums', root_path, class: "item" %>
+<div class="ui inverted fixed bottom large three item menu">
+	<%= link_to videos_index_path, class: "item" do %>
+    <i class="red video play icon"></i>Videos</a>
+  <% end %>
+	<%= link_to songs_index_path, class: "item" do %>
+    <i class="red music icon"></i>Songs</a>
+  <% end %>
+		<%= link_to albums_index_path, class: "item" do %>
+    <i class="red sound icon"></i>Albums</a>
+  <% end %>
 </div>

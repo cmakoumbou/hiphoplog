@@ -1,7 +1,7 @@
 $("<%=j render @songs %>").appendTo($("#songs"));
 // Update pagination link
 <% if @songs.last_page? %>
-  $('#pagination').remove();
+  $('#pagination').html("<h3 class='ui center aligned header'>The End</h3>");
 <% else %>
   $('#pagination')
     .html("<%=j link_to_next_page(@songs, 'Show More', :remote => true, class: 'fluid ui button') %>");

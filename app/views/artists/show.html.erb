@@ -1,10 +1,8 @@
 <% provide(:title, raw(@artist.name)) %>
 
 <div class="sixteen wide column">
-	<table id="releases" class="ui padded table">
-		<tbody>
-			<%= render 'home/releases' %>
-		</tbody>
+	<table id="releases" class="ui large table">
+		<%= render 'home/releases' %>
 	</table>
 	<div class="ui hidden divider"></div>
 	<div id="pagination">

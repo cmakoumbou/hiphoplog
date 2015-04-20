@@ -1,5 +1,11 @@
-<div class="ui fixed top three item menu">
-	<%= link_to 'Artists', root_path, class: "item" %>
-	<%= link_to 'Hiphoplog', root_path, class: "item" %>
-	<%= link_to 'About', root_path, class: "item" %>
+<div class="ui inverted fixed top large three item menu">
+	<%= link_to artists_index_path, class: "item" do %>
+    <i class="red users icon"></i>Artists</a>
+  <% end %>
+	<%= link_to root_path, class: "item" do %>
+    <i class="red home icon"></i>Hiphoplog</a>
+  <% end %>
+		<%= link_to root_path, class: "item" do %>
+    <i class="red info circle icon"></i>About</a>
+  <% end %>
 </div>

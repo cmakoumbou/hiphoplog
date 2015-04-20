@@ -13,3 +13,20 @@
 	</div>
 
 		<%= render 'layouts/navigation' %>
+
+<tr>
+	<td>Video</td>
+	<td><%= video.published_at.strftime("%B %d, %Y") %></td>
+	<td><%= link_to video.name, "https://www.youtube.com/watch?v=#{video.key}", :target => "_blank" %></td>
+	<td><%= link_to video.channel.artist.name, artists_root_path(video.channel.artist) %></td>
+</tr>
+
+<table id="videos" class="ui padded table">
+	<tbody>
+		<%= render @videos %>
+	</tbody>
+</table>
+<div class="ui hidden divider"></div>
+<div id="pagination">
+  <%= link_to_next_page(@videos, 'Show More', :remote => true, class: "fluid ui button") %>
+</div>

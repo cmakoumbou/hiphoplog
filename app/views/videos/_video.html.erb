@@ -1,6 +1,6 @@
 <tr>
-	<td>Video</td>
-	<td><%= video.published_at.strftime("%B %d, %Y") %></td>
+	<td><div class="ui large red horizontal label">Video</div></td>
+	<td><h4 class="ui header"><%= video.published_at.strftime("%B %d, %Y") %></h4></td>
 	<td><%= link_to video.name, "https://www.youtube.com/watch?v=#{video.key}", :target => "_blank" %></td>
 	<td><%= link_to video.channel.artist.name, artists_root_path(video.channel.artist) %></td>
 </tr>
