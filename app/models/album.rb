@@ -9,6 +9,8 @@
 #  channel_id     :integer
 #  artist_id      :integer
 #  external_image :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #  explicit       :boolean
 #
 

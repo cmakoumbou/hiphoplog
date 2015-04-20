@@ -1,13 +1,13 @@
 class ArtistsController < ApplicationController
   def index
-  	@artists = Artist.all.order('name ASC').page(params[:page]).per(3)
+  	@artists = Artist.order(name: :asc).page(params[:page]).per(3)
   end
 
   def show
   	@artist = Artist.find(params[:id])
-  	@videos = @artist.videos.order('published_at DESC')
-  	@songs = @artist.songs.order('published_at DESC')
-    @albums = @artist.albums.order('published_at DESC')
+  	@videos = @artist.videos.order(published_at: :desc, created_at: :desc)
+  	@songs = @artist.songs.order(published_at: :desc, created_at: :desc)
+    @albums = @artist.albums.order(published_at: :desc, created_at: :desc)
 
   	@releases = @videos + @songs + @albums
   	@releases = @releases.sort_by(&:published_at).reverse

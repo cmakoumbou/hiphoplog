@@ -1,6 +1,10 @@
 <tr>
 	<td><div class="ui large red horizontal label">Album</div></td>
   <td><h4 class="ui header"><%= album.published_at.strftime("%B %d, %Y") %></h4></td>
-  <td><%= link_to album.name, "https://open.spotify.com/album/#{album.key}", :target => "_blank" %></td>
+  <% if album.explicit == true %>
+  	<td><%= link_to "[Explicit] " + album.name, "https://open.spotify.com/album/#{album.key}", :target => "_blank" %></td>
+  <% else %>
+    <td><%= link_to album.name, "https://open.spotify.com/album/#{album.key}", :target => "_blank" %></td>
+  <% end %>
   <td><%= link_to album.channel.artist.name, artists_root_path(album.channel.artist) %></td>
 </tr>

@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20150413003427) do
     t.integer  "channel_id"
     t.integer  "artist_id"
     t.string   "external_image"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.boolean  "explicit"
   end
 

@@ -42,19 +42,6 @@ class Channel < ActiveRecord::Base
 		end
 	end
 
-	# def store_channel_video
-	# 	channel = Yt::Channel.new url: self.url
-	# 	channel_count = channel.videos.count
-	# 	if channel_count > self.count
-	# 		number_of_videos = channel_count - self.count
-	# 		videos = channel.videos.first(number_of_videos)
-	# 		videos.each do |v|
-	# 			Video.create(name: v.title, key: v.id, published_at: v.published_at, channel_id: self.id, artist_id: self.artist_id)
-	# 		end
-	# 		self.count = channel_count
-	# 	end
-	# end
-
 	def store_channel_video
 		channel = Yt::Channel.new url: self.url
 		channel_count = channel.videos.count
@@ -75,21 +62,6 @@ class Channel < ActiveRecord::Base
 			self.count = channel_count
 		end
 	end
-
-	# def store_channel_song
-	# 	client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
-	# 	channel = client.get('/resolve', url: self.url)
-	# 	channel_count = channel.track_count
-	# 	if channel_count > self.count
-	# 		number_of_songs = channel_count - self.count
-	# 		songs = client.get("/users/#{channel.id}/tracks").first(number_of_songs)
-	# 		songs.each do |s|
-	# 			Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
-	# 				external_url: s.permalink_url, external_image: s.artwork_url)
-	# 		end
-	# 		self.count = channel_count
-	# 	end
-	# end
 
 	def store_channel_song
 		client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)

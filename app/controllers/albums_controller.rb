@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
   def index
-  	@albums = Album.all.order('published_at DESC').page(params[:page]).per(3)
+  	@albums = Album.order(published_at: :desc, created_at: :desc).page(params[:page]).per(3)
   end
 end

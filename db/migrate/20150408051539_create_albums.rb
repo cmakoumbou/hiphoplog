@@ -7,6 +7,8 @@ class CreateAlbums < ActiveRecord::Migration
       t.references :channel, index: true, foreign_key: true
       t.references :artist, index: true, foreign_key: true
       t.string :external_image
+
+      t.timestamps null: false
     end
   end
 end
