@@ -15,9 +15,6 @@
 #
 
 class Song < ActiveRecord::Base
-	include PgSearch
-  multisearchable :against => [:name, :artist_name]
-
 	belongs_to :channel
 	belongs_to :artist
 

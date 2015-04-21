@@ -1,8 +1,0 @@
-$("<%=j render partial: 'search', collection: @search %>").appendTo($("#search"));
-// Update pagination link
-<% if @search.last_page? %>
-  $('#pagination').remove();
-<% else %>
-  $('#pagination')
-    .html("<%=j link_to_next_page(@search, 'Show More', :params => params, :remote => true, class: 'btn btn-default btn-lg btn-block') %>");
-<% end %>

@@ -9,9 +9,6 @@
 #
 
 class Artist < ActiveRecord::Base
-  include PgSearch
-  multisearchable :against => :name
-
 	has_many :channels, dependent: :destroy
 	has_many :videos
 	has_many :songs
