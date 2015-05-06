@@ -1,0 +1,7 @@
+<div class="sixteen wide mobile eight wide tablet eight wide computer centered column">
+	<%- flash.each do |name, msg| -%>
+	  <div class="ui message">
+	  	<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+	  </div>
+	<%- end -%>
+</div>

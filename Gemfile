@@ -22,6 +22,9 @@ gem 'jquery-infinite-pages', '0.2.0'
 gem 'soundcloud', '0.3.2'
 gem 'rspotify', '1.13.0'
 gem 'semantic-ui-sass', '1.11.5.0'
+gem 'rails_admin', '0.6.7'
+gem 'devise', '3.4.1'
+gem 'cancan', '1.6.10'
 
 group :development, :test do
   gem 'byebug', '4.0.3'

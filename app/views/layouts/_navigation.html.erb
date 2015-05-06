@@ -5,7 +5,13 @@
 	<%= link_to root_path, class: "item" do %>
     <i class="red home icon"></i>Hiphoplog</a>
   <% end %>
-		<%= link_to root_path, class: "item" do %>
-    <i class="red info circle icon"></i>About</a>
-  <% end %>
+  <% if user_signed_in? && current_user.admin? %>
+  	<%= link_to rails_admin_path, class: "item" do %>
+    	<i class="red info circle icon"></i>Admin</a>
+  	<% end %>
+	<% else %>
+  	<%= link_to about_path, class: "item" do %>
+  		<i class="red info circle icon"></i>About</a>
+  	<% end %>
+	<% end %>
 </div>

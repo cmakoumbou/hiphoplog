@@ -1,0 +1,19 @@
+<div class="sixteen wide mobile eight wide tablet eight wide computer centered column">
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <div class="ui inverted form">
+	  	<%= devise_error_messages! %>
+	    <h4 class="ui header">Forgot your password?</h4>
+	    <div class="ui divider"></div>
+		  <div class="field">
+			  <%= f.label :email %>
+			  <div class="ui icon input">
+			    <%= f.email_field :email, autofocus: true %>
+			    <i class="user icon"></i>
+			  </div>
+	    </div>
+	  	<%= f.submit "Send me reset password instructions", class: "ui button" %>
+	  </div>
+	<% end %>
+	<div class="ui divider"></div>
+	<%= render "devise/shared/links" %>
+</div>

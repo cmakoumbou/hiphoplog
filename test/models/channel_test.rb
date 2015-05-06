@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  artist_id  :integer
 #  multi      :boolean
+#  provider   :string
 #
 
 require 'test_helper'

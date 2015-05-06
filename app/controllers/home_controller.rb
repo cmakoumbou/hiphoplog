@@ -8,4 +8,7 @@ class HomeController < ApplicationController
   	@releases = @releases.sort_by(&:published_at).reverse
   	@releases = Kaminari.paginate_array(@releases).page(params[:page]).per(9)
   end
+
+  def about
+  end
 end

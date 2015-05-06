@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  artist_id  :integer
 #  multi      :boolean
+#  provider   :string
 #
 
 class Channel < ActiveRecord::Base
@@ -31,14 +32,17 @@ class Channel < ActiveRecord::Base
 		if self.url.include? "youtube"
 			channel = Yt::Channel.new url: self.url
 			self.count = channel.videos.count
+			self.provider = "youtube"
 		elsif self.url.include? "soundcloud"
 			client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
 			channel = client.get('/resolve', url: self.url)
 			self.count = channel.track_count
+			self.provider = "soundcloud"
 		elsif self.url.include? "spotify"
 			spotify_artist_id = self.url.match(/artist\/(\w*)/)[1]
 			channel = RSpotify::Artist.find(spotify_artist_id)
 			self.count = channel.albums(album_type: 'album', limit: 50, country: 'US').count
+			self.provider = "spotify"
 		end
 	end
 
@@ -59,12 +63,14 @@ class Channel < ActiveRecord::Base
 					Video.create(name: v.title, key: v.id, published_at: v.published_at, channel_id: self.id, artist_id: self.artist_id)
 				end
 			end
-			self.count = channel_count
+			self.update(count: channel_count)
+		elsif self.count > channel_count
+			self.update(count: channel_count)
 		end
 	end
 
-	def store_channel_song
-		client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
+	def store_channel_song(client)
+		# client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
 		channel = client.get('/resolve', url: self.url)
 		channel_count = channel.track_count
 		if channel_count > self.count
@@ -83,7 +89,9 @@ class Channel < ActiveRecord::Base
 						external_url: s.permalink_url, external_image: s.artwork_url)
 				end
 			end
-			self.count = channel_count
+			self.update(count: channel_count)
+		elsif self.count > channel_count
+			self.update(count: channel_count)
 		end
 	end
 
@@ -105,7 +113,55 @@ class Channel < ActiveRecord::Base
 						external_image: a.images.first["url"], explicit: false)
 				end
 			end
-			self.count = channel_count
+			self.update(count: channel_count)
+		elsif self.count > channel_count
+			self.update(count: channel_count)
 		end
 	end
+
+	def self.process_videos
+		Channel.where(provider: "youtube").each do |chan|
+			chan.store_channel_video
+		end
+	end
+
+	def self.process_songs
+		client = Soundcloud.new(:client_id => SOUNDCLOUD_CLIENT_ID)
+		Channel.where(provider: "soundcloud").each do |chan|
+			chan.store_channel_song(client)
+		end
+	end
+
+	def self.process_albums
+		Channel.where(provider: "spotify").each do |chan|
+			chan.store_channel_album
+		end
+	end
+
+  rails_admin do
+    list do
+      filters [:artist]
+      field :artist
+      field :url
+      field :multi
+      field :count
+    end
+    create do
+      field :artist
+      field :url
+      field :multi
+    end
+    update do
+      field :artist
+      field :url
+      field :multi
+      field :count
+      field :provider
+    end
+    modal do
+      field :artist
+      field :url
+      field :multi
+    end
+  end
 end

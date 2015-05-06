@@ -27,13 +27,22 @@ a:hover {
   color: #d95c5c;
 }
 
-
 .ui.button {
+  background-color: #fff;
+}
+
+.ui.button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+
+.more-button {
   background-color: #232426 !important;
   color: #fff !important;
 }
 
-.ui.button:hover {
+.more-button:hover {
   background-color: #232426 !important;
   color: #d95c5c !important;
 }

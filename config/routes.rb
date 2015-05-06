@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :users, :skip => :registrations
+  mount RailsAdmin::Engine => '/mabika', as: 'rails_admin'
   root 'home#index'
+
+  get '/about', to: 'home#about', as: :about
 
   get '/videos', to: 'videos#index', as: :videos_index
   get '/songs', to: 'songs#index', as: :songs_index

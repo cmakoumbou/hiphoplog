@@ -4,5 +4,5 @@ $("<%=j render @videos %>").appendTo($("#videos"));
 	$('#pagination').html("<h3 class='ui center aligned header'>The End</h3>");
 <% else %>
   $('#pagination')
-    .html("<%=j link_to_next_page(@videos, 'Show More', :remote => true, class: 'fluid ui button') %>");
+    .html("<%=j link_to_next_page(@videos, 'Show More', :remote => true, class: 'fluid ui button more-button') %>");
 <% end %>

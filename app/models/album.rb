@@ -28,4 +28,15 @@ class Album < ActiveRecord::Base
 	validates :channel_id, presence: true
 	validates :artist_id, presence: true
 	validates :external_image, presence: true
+
+	rails_admin do
+    list do
+      filters [:artist]
+      field :artist
+      field :name
+    end
+    update do
+      field :name
+    end
+  end
 end

@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  artist_id  :integer
 #  multi      :boolean
+#  provider   :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
