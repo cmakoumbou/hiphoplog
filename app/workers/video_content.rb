@@ -2,7 +2,7 @@ class VideoContent
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { daily.hour_of_day(20) }
+  recurrence { daily.hour_of_day(19) }
 
   def perform
     puts 'Load Video Content'

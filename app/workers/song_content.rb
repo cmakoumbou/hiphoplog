@@ -4,7 +4,7 @@ class SongContent
 
   SOUNDCLOUD_CLIENT_ID = "c26a11a448231c63650b5319453f2285"
 
-  recurrence { daily.hour_of_day(20) }
+  recurrence { daily.hour_of_day(19) }
 
   def perform
     puts 'Load Song Content'
