@@ -9,6 +9,6 @@ class HomeController < ApplicationController
   	@releases = Kaminari.paginate_array(@releases).page(params[:page]).per(9)
   end
 
-  def about
+  def contact
   end
 end

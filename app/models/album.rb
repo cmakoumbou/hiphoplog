@@ -34,6 +34,7 @@ class Album < ActiveRecord::Base
       filters [:artist]
       field :artist
       field :name
+      field :explicit
     end
     update do
       field :name

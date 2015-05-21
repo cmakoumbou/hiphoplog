@@ -1,6 +1,7 @@
 <% provide(:title, raw(@artist.name)) %>
 
 <div class="sixteen wide column">
+	<h2 class="ui center aligned header red header"><%= @artist.name %></h2>
 	<table id="releases" class="ui large table">
 		<%= render 'home/releases' %>
 	</table>

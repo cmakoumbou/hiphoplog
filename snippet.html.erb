@@ -30,3 +30,33 @@
 <div id="pagination">
   <%= link_to_next_page(@videos, 'Show More', :remote => true, class: "fluid ui button") %>
 </div>
+
+<div class="ui inverted fixed top large three item menu">
+	<%= link_to artists_index_path, class: "item" do %>
+    <i class="red users icon"></i>Artists</a>
+  <% end %>
+	<%= link_to root_path, class: "item" do %>
+    <i class="red home icon"></i>Hiphoplog</a>
+  <% end %>
+  <% if user_signed_in? && current_user.admin? %>
+  	<%= link_to rails_admin_path, class: "item" do %>
+    	<i class="red info circle icon"></i>Admin</a>
+  	<% end %>
+	<% else %>
+  	<%= link_to about_path, class: "item" do %>
+  		<i class="red info circle icon"></i>About</a>
+  	<% end %>
+	<% end %>
+</div>
+
+<div class="ui inverted fixed bottom large three item menu">
+	<%= link_to videos_index_path, class: "item" do %>
+    <i class="red video play icon"></i>Videos</a>
+  <% end %>
+	<%= link_to songs_index_path, class: "item" do %>
+    <i class="red music icon"></i>Songs</a>
+  <% end %>
+		<%= link_to albums_index_path, class: "item" do %>
+    <i class="red sound icon"></i>Albums</a>
+  <% end %>
+</div>
