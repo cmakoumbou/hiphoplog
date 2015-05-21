@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-  	@artists = Artist.order(name: :asc).page(params[:page]).per(3)
+  	@artists = Artist.order(name: :asc).page(params[:page]).per(126)
   end
 
   def show
@@ -11,6 +11,6 @@ class ArtistsController < ApplicationController
 
   	@releases = @videos + @songs + @albums
   	@releases = @releases.sort_by(&:published_at).reverse
-  	@releases = Kaminari.paginate_array(@releases).page(params[:page]).per(3)
+  	@releases = Kaminari.paginate_array(@releases).page(params[:page]).per(126)
   end
 end

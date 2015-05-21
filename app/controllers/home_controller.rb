@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   	@releases = @videos + @songs + @albums
   	@releases = @releases.sort_by(&:published_at).reverse
-  	@releases = Kaminari.paginate_array(@releases).page(params[:page]).per(9)
+  	@releases = Kaminari.paginate_array(@releases).page(params[:page]).per(126)
   end
 
   def contact
