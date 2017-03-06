@@ -13,7 +13,7 @@
 #
 
 class Channel < ActiveRecord::Base
-	SOUNDCLOUD_CLIENT_ID = "c26a11a448231c63650b5319453f2285"
+	SOUNDCLOUD_CLIENT_ID = ENV['SOUNDCLOUD_CLIENT_ID']
 	belongs_to :artist
 	has_many :videos, dependent: :destroy
 	has_many :songs, dependent: :destroy
@@ -79,13 +79,13 @@ class Channel < ActiveRecord::Base
 		  if self.multi == true
 		  	songs.each do |s|
 		  		if s.title.downcase.include? self.artist.name.downcase
-		  			Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
+		  			Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id,
 							external_url: s.permalink_url, external_image: s.artwork_url)
 		  		end
 		  	end
 		  else
 				songs.each do |s|
-					Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id, 
+					Song.create(name: s.title, key: s.id, published_at: s.created_at, channel_id: self.id, artist_id: self.artist_id,
 						external_url: s.permalink_url, external_image: s.artwork_url)
 				end
 			end

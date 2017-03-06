@@ -1,5 +1,4 @@
 Yt.configure do |config|
-  # config.api_key = 'AIzaSyAABlzVAZCjwh301BnMvz5GH5DukH8VNQI'
-  config.api_key = 'AIzaSyAx5sAjahIlRHcQwL3_uDkGUvYhH2dk3eo'
+  config.api_key = ENV['YT_API_KEY']
   config.log_level = :debug
 end

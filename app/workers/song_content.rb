@@ -2,7 +2,7 @@ class SongContent
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  SOUNDCLOUD_CLIENT_ID = "c26a11a448231c63650b5319453f2285"
+  SOUNDCLOUD_CLIENT_ID = ENV['SOUNDCLOUD_CLIENT_ID']
 
   recurrence { daily.hour_of_day(19) }
 
