@@ -1,28 +1,15 @@
-== README
+== HipHopLog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hiphoplog.com checks hundreds of youtube, soundcloud and spotify accounts every day to provide new videos, songs and albums from Hip Hop artists.
 
-Things you may want to cover:
+Features:
 
-* Ruby version
+* Youtube API
 
-* System dependencies
+* Soundcloud API
 
-* Configuration
+* Spotify API
 
-* Database creation
+* Background jobs
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* CMS
